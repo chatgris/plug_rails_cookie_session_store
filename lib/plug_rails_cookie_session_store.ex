@@ -75,10 +75,11 @@ defmodule PlugRailsCookieSessionStore do
     %{encryption_salt: encryption_salt,
       signing_salt: signing_salt,
       key_opts: key_opts,
-      serializer: serializer}
+      serializer: serializer} |> IO.inspect
   end
 
   def get(conn, cookie, opts) do
+    IO.inspect {cookie, opts}
     key_opts = opts.key_opts
     cookie = cookie |> URI.decode_www_form
     if key = opts.encryption_salt do
